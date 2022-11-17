@@ -1,5 +1,6 @@
 # NFL Hall of Fame Classification with Career Statistics
 
+### John Harrigan and Evan Staffen
 
 # Business Understanding
 
@@ -14,7 +15,7 @@ We set out to create a model that can determine whether or not a player will mak
 
 > What are the most important metrics for determining whether a player will make it into the hall of fame?
     
-> Who is near the the hall of fame status that is not up for nomination yet that should be targeted?
+> Who is near the the hall of fame status that is not up for nomination yet that should be targeted for brand partnerships?
 
 # Datasets
 
@@ -30,19 +31,15 @@ Two datasets from __[Kaggle](https://www.kaggle.com/datasets/zynicide/nfl-footba
 
 # Data Understanding and Visualization
 
-There were many columns that were irrelevant for analysis and could therefore be dropped. 
+* Visual of disparity between HOF and not *
 
-'death_date', 'college', 'hof_induction_year', 'year', 'high_school', 'current_salary', 'current_team' 'draft_team', 'draft_round', 'game_number', 'opponent_score', 'player_team_score'
+* HOF by position *
 
-There were approximately 400 rows with the birth_place as NaN, and we decided to fill those with 'unknown' so we could keep those players statistics. The birth_place column was then separated into 6 different regions of America, and a 7th region was considered international and contained the unknowns. We thought this was fair to do as NFL players have histoircally been predominantly American. 
+* HOF by games played *
 
-Since there were over 6,000 undrafted players, the draft_position and draft_year columns had over 6,000 NaNs. We decided to keep those players by imputing their draft year as their birth year + 20 and their draft position value as 400 since 394 was the actual highest draft pick in the dataset. It is inherently worse to not get drafted so we felt this was a fair assumption.
+* HOF by awards *
 
-Using our datasets, we created new columns for: players total games played, their win percentage, all the teams they have played for and their total awards won.
-
-Each player's positions were grouped into 5 subcategories considering whether they were on defense, offense or kickers. Players who played multiple positions were placed into a separate 6th subcategory called 'MX'.  
-
-Next, we had to properly format and change the datatypes of height, weight and birth_date
+* HOF by team *
 
 
 # Modeling
