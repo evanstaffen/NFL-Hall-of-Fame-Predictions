@@ -2,22 +2,21 @@
 
 ### John Harrigan and Evan Staffen
 
-# Business Understanding
+# 1. Business Understanding
 
-**Stakeholder:** Marketing teams for large corporations, NFL teams.
+**Stakeholder:** Agents of recently retired NFL players.
 
-The ultimate recognition for an NFL player is to be inducted into the Hall of Fame. Only 1.2% of NFL players can call themselves Hall of Famers. While the avid football fan knows more than just this small fraction of players, Hall of Famers are the household names. They have influence way beyond their playing days and way outside the sphere of football.
+The ultimate recognition for an NFL player is to be inducted into the Hall of Fame. An NFL player is eligible for nomination five years after retirement. Only 1.2% of NFL players can call themselves Hall of Famers. While the avid football fan knows more than just this small fraction of players, Hall of Famers are the household names. They have influence beyond their playing days and way outside the sphere of football.  
 
 Michael Strahan, former defensive back for the New York Giants is a host on the talk-show 'Live with Michael and Kelly'. Troy Polamalu, one of the all-time great safeties for the Pittsburgh Steelers, is still seen in Head & Shoulder's ads because of his famous, curly hair. Peyton Manning may be one of the prime examples of this. He was just the host of the Country Music Awards, acted in the animated movie 'Ferdinand' and has endorsement deals with various companies. 
 
-
-We set out to create a model that can determine whether or not a player will make it to the Hall of Fame based on their career statistics.
+Ultimately, if NFL player agents could use our model to predict the likelihood of going to the hall of fame, then they could maximize the value of the players they have signed. We set out to create a model that can determine whether or not a player will make it to the Hall of Fame based on their career statistics. 
 
 > What are the most important metrics for determining whether a player will make it into the hall of fame?
     
-> Who is near the the hall of fame status that is not up for nomination yet that should be targeted for brand partnerships?
+> Who is near the the hall of fame status that is not up for nomination yet that should be targeted?
 
-# Datasets
+# 2. Datasets
 
 Multiple datasets from different sources were used for this analysis. All of the datasets can be accessed from the data folder located within this repository.
 
@@ -29,17 +28,20 @@ Two datasets from __[Kaggle](https://www.kaggle.com/datasets/zynicide/nfl-footba
 
 **JACK POSSIBLY DOING MORE WEB SCRAPING**
 
+
 # Data Understanding and Visualization
 
-* Visual of disparity between HOF and not *
-
-* HOF by position *
+* HOF by awards *
+![AwardsPerPlayer](https://user-images.githubusercontent.com/113449546/202628228-204a3cd3-42a0-46fa-b2c3-3de90052a66b.png)
 
 * HOF by games played *
+![HOFWin%](https://user-images.githubusercontent.com/113449546/202628174-e306f2aa-aaea-4f13-a076-0cac885017d3.png)
 
-* HOF by awards *
+* HOF by position *
+![PosHOF%](https://user-images.githubusercontent.com/113449546/202628093-9a14acf4-e766-4767-8bb5-c30a7ebc54fd.png)
 
 * HOF by team *
+![HOFbyTeam](https://user-images.githubusercontent.com/113449546/202628147-2ce3b61f-e509-4a7b-91d7-07cd54e8264d.png)
 
 
 # Modeling
@@ -66,3 +68,9 @@ We decided to focus on maximizing recall with our models, whick is a measure tha
 *Model Limitations:*
 
 *Recommendations:*
+
+# Next Steps
+
+#### 1. We recommend trying to compile more data on College Football statistics to incorporate into the model.
+#### 2. Incorporate data on player characteristics/popularity.
+#### 3. Create different metrics and models to evaluate players by position.
