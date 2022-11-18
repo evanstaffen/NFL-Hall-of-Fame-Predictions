@@ -49,6 +49,14 @@ It is not surpirsing that quarterbacks and playmakers (runningbacks, wide receiv
 
 The career accolades gathered such as MVPs, Offensive and Defensive player of the year etc. all undoubtedly play an important role in hall of fame determination. While players with one career award are unlikely to make it into the hall of fame, after one award the odds seem to swing in the players' favor. 
 
+> ![PassTDHOF](https://user-images.githubusercontent.com/113449546/202737279-a8702cf3-aa43-4500-b9a6-a769f5486513.png)
+
+> ![RushingTDHOF](https://user-images.githubusercontent.com/113449546/202737384-124185ae-bc5a-4294-a31d-c92eab5237c5.png)
+
+> ![ReceivingTDHOF](https://user-images.githubusercontent.com/113449546/202737320-1ff359f6-d27d-4269-ba35-95eaa8ac509a.png)
+
+As expected, hall of famers clearly produce more touchdowns than their non hall of fame counterparts. Quarterbacks in the hall of fame have a slightly more normal distribution in their touchdowns when compared to non hall of famers. Rushing and receiving touchdowns have a much wider spread amongst the hall of famers. In all these cases, non hall of famers clearly score much less touchdowns than hall of famers.
+
 # Modeling
 
 Since the hall of fame players only make up 1.2% of the dataset, we knew we would be having to acconut for this class imbalance in our models. As well, that inherently means that we want a model that does better than picking a player to not go to the hall of fame 98.8% of the time. All the models created utilized imblearn's SMOTE in order to help account for the severe imbalance. As well, every model used GridSearchCV with a 5-fold cross-validation to find the best parameters that were then run on the test set.
