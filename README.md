@@ -31,18 +31,21 @@ Two datasets from __[Kaggle](https://www.kaggle.com/datasets/zynicide/nfl-footba
 
 # Data Understanding and Visualization
 
-* HOF by awards *
-![AwardsPerPlayer](https://user-images.githubusercontent.com/113449546/202628228-204a3cd3-42a0-46fa-b2c3-3de90052a66b.png)
+> ![HOFbyTeam](https://user-images.githubusercontent.com/113449546/202628147-2ce3b61f-e509-4a7b-91d7-07cd54e8264d.png)
 
-* HOF by games played *
-![HOFWin%](https://user-images.githubusercontent.com/113449546/202628174-e306f2aa-aaea-4f13-a076-0cac885017d3.png)
+As mentioned above, only 1.2% of players make it to the hall of fame. Above the team with the highest percentage of hall of famers is the Cleveland Browns with 1.74%. 
 
-* HOF by position *
-![PosHOF%](https://user-images.githubusercontent.com/113449546/202628093-9a14acf4-e766-4767-8bb5-c30a7ebc54fd.png)
+> ![HOFWin%](https://user-images.githubusercontent.com/113449546/202628174-e306f2aa-aaea-4f13-a076-0cac885017d3.png)
 
-* HOF by team *
-![HOFbyTeam](https://user-images.githubusercontent.com/113449546/202628147-2ce3b61f-e509-4a7b-91d7-07cd54e8264d.png)
+Although hall of famers tend to have an average win percentage approximately 10 points higher than the non-hall of famers, there is clearly a significant overlap in their win percentages. 
 
+> ![PosHOF%](https://user-images.githubusercontent.com/113449546/202628093-9a14acf4-e766-4767-8bb5-c30a7ebc54fd.png)
+
+It is not surpirsing that quarterbacks and playmakers (runningbacks, wide receivers and tight ends) all have the highest percentage of players going into the hall of fame. While it is surprising that defensive players make up approximately 1/3 of the hall of famers, they also clearly get inducted at a much lower rate.
+
+> ![AwardsPerPlayer](https://user-images.githubusercontent.com/113449546/202628228-204a3cd3-42a0-46fa-b2c3-3de90052a66b.png)
+
+The career accolades gathered such as MVPs, Offensive and Defensive player of the year etc. all undoubtedly play an important role in hall of fame determination. While players with one career award are unlikely to make it into the hall of fame, after one award the odds seem to swing in the players' favor. 
 
 # Modeling
 
