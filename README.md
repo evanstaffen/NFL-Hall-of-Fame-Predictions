@@ -4,7 +4,7 @@
 
 ### John Harrigan and Evan Staffen
 
-# 1. Business Understanding
+# Business Understanding
 
 **Stakeholder:** Agents of recently retired NFL players.
 
@@ -18,7 +18,7 @@ Ultimately, if NFL player agents could use our model to predict the likelihood o
     
 > Who is near the the hall of fame status that is not up for nomination yet that should be targeted?
 
-# 2. Datasets
+# Datasets
 
 Multiple datasets from different sources were used for this analysis. All of the datasets can be accessed from the data folder located within this repository.
 
@@ -26,10 +26,7 @@ Two datasets from __[Kaggle](https://www.kaggle.com/datasets/zynicide/nfl-footba
 
 7 separate datasets were taken from __[Profootballreference's database](https://www.pro-football-reference.com/)__ so we could add the individual accolades for each player. 6 of these datasets were used to compile the MVP, DPOY, DROY, OPOY, OROY, Superbowl MVPs of each year into a new column which was the sum of everyone of those awards a player won in their career. The last dataset allowed us to create a column for our target, whether a player made the hall of fame as 1 or they didn't make the hall of fame as 0. 
 
-* FIGURE OUT HOW TO CITE PROPERLY *
-
-**JACK POSSIBLY DOING MORE WEB SCRAPING**
-
+Individual player data from 2017-2022 was scraped from __[GridIronAI's database](https://gridironai.com/football/)__ and merged with the Kaggle dataset so we had career statistics for all players from 1950-2022.
 
 # Data Understanding and Visualization
 
@@ -59,7 +56,7 @@ As expected, hall of famers clearly produce more touchdowns than their non hall 
 
 # Modeling
 
-Since the hall of fame players only make up 1.2% of the dataset, we knew we would be having to acconut for this class imbalance in our models. As well, that inherently means that we want a model that does better than picking a player to not go to the hall of fame 98.8% of the time. All the models created utilized imblearn's SMOTE in order to help account for the severe imbalance. As well, every model used GridSearchCV with a 5-fold cross-validation to find the best parameters that were then run on the test set.
+Since the hall of fame players only make up 1.2% of the dataset, we knew we would be having to acconut for this class imbalance in our models. As well, that inherently means that we want a model that does better than picking a player to not go to the hall of fame 98.8% of the time. All the models created utilized imblearn's SMOTE in order to help account for the severe imbalance. As well, every model used GridSearchCV with a 3 or 5-fold cross-validation to find the best parameters that were then run on the test set.
 
 We decided to focus on maximizing recall with our models, whick is a measure that tries to minimize the number of false negative results we obtain. A false negative in this case would be players who the model predicts to not go to the hall of fame, even though they do. Ultimately, the cost of missing out on a hall of fame caliber player is much worse than taking a chance on one that does not pan out. 
 
@@ -73,14 +70,49 @@ We decided to focus on maximizing recall with our models, whick is a measure tha
 
 # Evaluation
 
+## Model Performance and Evaluation
+
+While the basic logistic regression was extremely accurate, it still suffered from a high false negative rate. After applying SMOTE to the model, even though the accuracy decreased by around 6 percentage points, the recall improved significantly. Using GridSearch led to a decreased testing recall in the logistic regression model. The XGBoost model had even worse recall than all the logistic regression models. The SVC model was comparable to the Logistic Regression model, whereas the Random Forest and KNN models clearly were overfitting. We ultimately decided that the SVC model was the best model.
+
+| Model | Training Accuracy | Testing Accuracy | Training Recall | Testing Recall |
+| --- | --- | --- | --- | --- |
+| Basic Logistic Regression | 0.991 | 0.990| 0.319 | 0.338 |
+| Logistic Regression + SMOTE | 0.927 | 0.927| 0.938 | 0.825 |
+| Logistic Regression with GridSearch | 0.928 | 0.928| 0.931 | 0.794 |
+| XGBoost | 0.990 | 0.989 | 0.269 | 0.221 |
+| SVC | 0.925 | 0.923 | 0.975 | 0.809 |
+| Random Forest | 0.971 | 0.962 | 0.900 | 0.559 |
+| KNN | 0.984 | 0.968 | 1.0 | 0.485 |
+
+
+Below is a table of the top 10 features from the SVC model. Unsurprisingly, the offensive positions and their statistics seem to be the most important feature for determining the hall of fame status. Weight came back as the second most important factor when determining hall of fame status, which could be explained by there being many defenders and offensive linemen in the hall of fame, who are generally much larger than the average player. Although the strongest correlated predictor as draft year is definitely a surprising outcome and is one that is worth further investigation in the future.
+
+| Coefficients | Column |
+| --- | --- |
+| 0.849191	| position_QB |
+| 0.897590 | total_games |
+| 0.923156 | position_PM |
+| 0.955432 | punt_return_attempts |
+| 1.018602 | punt_return_yards |
+| 1.422173 | receiving_yards |
+| 1.476975 | kick_return_yards |
+| 1.488679 | kick_return_attempts |
+| 1.553485 | weight |
+| 1.834826 | draft_year |
 
 # Conclusions & Recommendations
 
-*Model Performance:*
+## Model Limitations:
 
-*Model Limitations:*
+One shortcoming of the model is that we tried to create a model that could use any player’s career statistics at any position, by generalizing the position category in the dataset itself into six categories, and then predict their hall of fame status. Ultimately, we could obtain better predictions by creating separate models for players at different groups of positions. For instance, one model could have been made for quarterbacks, one for running backs, wide receivers and tight ends, one for kickers and punters, one for offensive linemen and one for defenders. Since these positional categories career statistics are more easily comparable, they would have significantly improved predictive power. 
 
-*Recommendations:*
+There are some additions we would like to make to the model in the future. For instance, it is not solely a player’s statistics that determines their likelihood to get into the hall of fame. There are multiple factors such as a player’s popularity or likability, their criminal history or controversial past, or even some other awards we did not consider like the Walter Payton Man of the Year Award, given to a player for their philanthropic endeavors. For example, a player like Antonio Brown would likely be predicted to make it into the Hall of Fame, even though his off the field antics have certainly stripped him of that possibility. Alex Smith, a quarterback who had a devastating, career-threatening leg injury and captured fans hearts by miraculously returing to play again, would have little chance of getting into the Hall of Fame on our model. Another interesting addition would be NCAA Football statistics for all NFL players to determine if there is any significance between things like their college statistics or colleges attended on their Hall of Fame status. 
+
+## Recommendations:
+> Agents should generally be looking at their players that are either playing quarterback or one of the playmaker positions
+
+> Players who specialize as kick returners on top of their other offensive abilities have a higher chance of making it into the hall of fame
+
 
 # Next Steps
 
