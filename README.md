@@ -116,6 +116,14 @@ There are some additions we would like to make to the model in the future. For i
 
 # Next Steps
 
-#### 1. We recommend trying to compile more data on College Football statistics to incorporate into the model.
+#### 1. We recommend trying to include data on College Football statistics to incorporate into the model.
 #### 2. Incorporate data on player characteristics/popularity.
 #### 3. Create different metrics and models to evaluate players by position.
+
+# Repository Structure 
+    ├── Data
+    ├── Images
+    ├── .gitignore
+    ├── NFL Hall of Fame Predictions.pdf
+    ├── Hall of Fame Analysis.ipynb
+    └── README.md
