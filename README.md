@@ -123,6 +123,7 @@ There are some additions we would like to make to the model in the future. For i
 # Repository Structure 
     ├── Data
     ├── Images
+    ├── .gitattributes
     ├── .gitignore
     ├── NFL Hall of Fame Predictions.pdf
     ├── Hall of Fame Analysis.ipynb
